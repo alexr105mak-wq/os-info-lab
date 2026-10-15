@@ -1,9 +1,3 @@
-"""Определяет ОС, собирает её параметры и сохраняет их в JSON.
-
-Запуск: python my_script.py [путь_к_json]
-Используются только стандартные модули Python; системные утилиты ОС
-(uname, systeminfo, sysctl, wmic и т.п.) не вызываются.
-"""
 
 import datetime
 import json
@@ -15,7 +9,6 @@ DEFAULT_OUTPUT = "os_info.json"
 
 
 def detect_os():
-    """Возвращает 'Windows', 'Linux', 'MacOS' или 'Unknown'."""
     if sys.platform.startswith("win"):
         return "Windows"
     if sys.platform.startswith("linux"):
@@ -26,7 +19,6 @@ def detect_os():
 
 
 def safe(func, default=None):
-    """Выполняет func и возвращает default, если сбор параметра не удался."""
     try:
         return func()
     except Exception:
